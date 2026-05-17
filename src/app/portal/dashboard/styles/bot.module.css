@@ -1,0 +1,92 @@
+/* ── Bot flotante ─────────────────────────────── */
+.botWidget {
+  position: fixed;
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  right: 14px;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  text-decoration: none;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 359px) {
+  .botWidget { right: 8px; bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+  .botCirculo { width: 48px; height: 48px; }
+  .botBurbuja { font-size: 0.76rem; padding: 7px 12px; }
+}
+
+@media (min-width: 768px) {
+  .botWidget { bottom: 28px; right: 28px; }
+}
+
+.botWidgetDragging { cursor: grabbing; }
+.botWidgetDragging .botCirculo {
+  box-shadow: 0 0 40px rgba(0,200,240,0.8);
+  border-color: var(--acento-hover);
+  transform: scale(1.08);
+}
+
+.botBurbuja {
+  background: var(--acento);
+  color: #000;
+  font-weight: 700;
+  font-size: clamp(0.78rem, 2.5vw, 0.85rem);
+  padding: 9px 16px;
+  border-radius: 18px 18px 4px 18px;
+  white-space: nowrap;
+  max-width: calc(100vw - 40px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 4px 24px rgba(0,200,240,0.45);
+  animation: burbujaViva 3s ease-in-out infinite;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.botBurbujaOculta {
+  opacity: 0;
+  transform: translateY(6px) scale(0.94);
+  pointer-events: none;
+  animation: none;
+}
+
+.botCirculo {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: var(--tarjeta);
+  border: 2px solid var(--acento);
+  color: var(--acento);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 22px rgba(0,200,240,0.38);
+  animation: iconoVivo 3.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.botWidget:hover .botBurbuja { box-shadow: 0 6px 32px rgba(0,200,240,0.7); }
+.botWidget:hover .botCirculo {
+  box-shadow: 0 0 32px rgba(0,200,240,0.65);
+  border-color: var(--acento-hover);
+  color: var(--acento-hover);
+}
+
+@keyframes burbujaViva {
+  0%, 100% { transform: translateY(0)    scale(1);    }
+  30%       { transform: translateY(-4px) scale(1.02); }
+  65%       { transform: translateY(2px)  scale(0.99); }
+}
+
+@keyframes iconoVivo {
+  0%, 100% { transform: translateY(0);   }
+  40%       { transform: translateY(-5px); }
+  70%       { transform: translateY(2px);  }
+}

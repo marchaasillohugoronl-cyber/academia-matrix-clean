@@ -6,7 +6,13 @@ import { logoutPortal } from '../actions'
 import { Home, Bell, BookOpen, ClipboardList, LogOut, BrainCircuit, ArrowRight, UserCircle, CheckCircle2, Pencil } from 'lucide-react'
 import AcordeonItem  from './AcordeonItem'
 import BotFlotante   from './BotFlotante'
-import styles from './dashboard.module.css'
+import layoutStyles  from './styles/layout.module.css'
+import headerStyles  from './styles/header.module.css'
+import welcomeStyles from './styles/welcome.module.css'
+import navStyles     from './styles/nav.module.css'
+import itemStyles    from './styles/acordeon.module.css'
+
+const styles = { ...layoutStyles, ...headerStyles, ...welcomeStyles, ...navStyles, ...itemStyles }
 
 type Tab = 'inicio' | 'examenes' | 'encuestas'
 

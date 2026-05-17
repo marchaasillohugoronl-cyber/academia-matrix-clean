@@ -1,0 +1,91 @@
+/* ── App Header ──────────────────────────────── */
+.appHeader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(12px, 4vw, 20px);
+  height: 56px;
+  background: rgba(2, 8, 16, 0.98);
+  border-bottom: 1px solid var(--borde-sutil);
+  backdrop-filter: blur(20px);
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .appHeader { grid-area: header; }
+}
+
+.appHeaderBrand { display: flex; align-items: center; gap: clamp(6px, 2vw, 10px); }
+
+.appBrandDot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--acento);
+  box-shadow: 0 0 10px rgba(0,200,240,0.8);
+  flex-shrink: 0;
+}
+
+.appBrandName {
+  font-family: var(--fuente-display);
+  font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+  font-weight: 900;
+  letter-spacing: clamp(2px, 1vw, 4px);
+  text-transform: uppercase;
+  color: var(--texto);
+  white-space: nowrap;
+}
+
+.appBrandSub {
+  font-size: 0.56rem;
+  color: var(--atenuado);
+  display: none;
+  white-space: nowrap;
+}
+@media (min-width: 360px) { .appBrandSub { display: inline; } }
+
+.appHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Zona táctil mínima de 44px */
+.appPerfilBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  color: var(--atenuado);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.appPerfilBtn:hover { color: var(--acento); }
+
+.appAvatar {
+  width: 36px; height: 36px;
+  background: rgba(0,200,240,0.1);
+  border: 1px solid rgba(0,200,240,0.35);
+  color: var(--acento);
+  font-family: var(--fuente-display);
+  font-size: 0.58rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  /* área táctil extendida */
+  padding: 4px;
+  box-sizing: content-box;
+}
+.appAvatar:hover    { background: rgba(0,200,240,0.16); box-shadow: 0 0 12px rgba(0,200,240,0.3); }
+.appAvatar:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.appAvatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}

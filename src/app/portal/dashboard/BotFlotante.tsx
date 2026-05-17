@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Bot } from 'lucide-react'
-import styles from './dashboard.module.css'
+import styles from './styles/bot.module.css'
 
 const MENSAJES_DIA = [
   '¿Estudiamos juntos?',
@@ -61,22 +61,27 @@ export default function BotFlotante({ nombre }: { nombre: string }) {
   useEffect(() => {
     setMensaje(saludoInicial(nombre))
 
+    function pausaAleatoria() {
+      // entre 30 000 ms y 40 000 ms
+      return 30_000 + Math.random() * 10_000
+    }
+
     function ocultar() {
       setBurbuja(false)
-      timer.current = setTimeout(mostrar, 20_000)
+      timer.current = setTimeout(mostrar, pausaAleatoria())
     }
     function mostrar() {
       const lista = isNoche() ? MENSAJES_NOCHE : MENSAJES_DIA
       idxRef.current = (idxRef.current + 1) % lista.length
       setMensaje(lista[idxRef.current])
       setBurbuja(true)
-      timer.current = setTimeout(ocultar, 10_000)
+      timer.current = setTimeout(ocultar, 8_000)
     }
 
     timer.current = setTimeout(() => {
       setVisible(true)
       setBurbuja(true)
-      timer.current = setTimeout(ocultar, 10_000)
+      timer.current = setTimeout(ocultar, 3_000)
     }, 600)
 
     return () => { if (timer.current) clearTimeout(timer.current) }

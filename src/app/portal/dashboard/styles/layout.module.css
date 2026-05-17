@@ -1,0 +1,122 @@
+/* ── Página ──────────────────────────────────── */
+.page {
+  min-height: 100svh;
+  background: var(--fondo);
+  display: flex;
+  flex-direction: column;
+  color: var(--texto);
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .page { max-width: 440px; margin: 0 auto; box-shadow: 0 0 80px rgba(0,0,0,0.6); }
+}
+
+@media (min-width: 768px) {
+  .page {
+    display: grid;
+    grid-template-areas: "sidebar header" "sidebar main";
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 56px 1fr;
+    height: 100svh;
+    overflow: hidden;
+  }
+  .appMain {
+    grid-area: main;
+    overflow-y: auto;
+    padding-bottom: 32px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,200,240,0.2) transparent;
+  }
+  .appSectionLabel { padding: 20px 28px 8px; }
+  .appContent      { padding: 8px 28px 28px; }
+  .resumenGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+}
+
+/* ── Main ────────────────────────────────────── */
+.appMain {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ── Section label ───────────────────────────── */
+.appSectionLabel {
+  padding: clamp(12px, 3vw, 18px) clamp(12px, 4vw, 20px) 6px;
+  font-family: var(--fuente-display);
+  font-size: 0.54rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--atenuado);
+}
+
+/* ── Content ─────────────────────────────────── */
+.appContent {
+  padding: 8px clamp(10px, 4vw, 16px) 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.appLista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Cabecera mini de sección (vista Inicio) ─── */
+.seccionMiniHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 4px 6px;
+  border-bottom: 1px solid var(--borde-sutil);
+  margin-bottom: 2px;
+}
+.seccionMiniIcono  { display: flex; align-items: center; color: var(--acento); flex-shrink: 0; }
+.seccionMiniTitulo {
+  font-family: var(--fuente-display);
+  font-size: 0.54rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  flex: 1;
+}
+.seccionMiniBadge {
+  font-family: var(--fuente-display);
+  font-size: 0.46rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  background: rgba(0,200,240,0.1);
+  color: var(--acento);
+  border: 1px solid rgba(0,200,240,0.22);
+}
+
+/* ── Estados vacíos ──────────────────────────── */
+.vacioInline {
+  font-size: clamp(0.76rem, 2vw, 0.82rem);
+  color: var(--atenuado);
+  padding: 10px 4px 6px;
+  font-style: italic;
+}
+
+.vacioCentro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: clamp(32px, 8vw, 52px) 24px;
+  color: var(--atenuado);
+  font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+  text-align: center;
+}
+
+/* ── Grid resumen ────────────────────────────── */
+.resumenGrid { display: flex; flex-direction: column; gap: 0; }
+.resumenCol  { display: flex; flex-direction: column; }

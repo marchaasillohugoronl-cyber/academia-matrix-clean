@@ -2,7 +2,7 @@
 import { useState, useRef, useLayoutEffect } from 'react'
 import Link from 'next/link'
 import { ChevronDown, ArrowRight } from 'lucide-react'
-import styles from './dashboard.module.css'
+import styles from './styles/acordeon.module.css'
 
 type Props = {
   id: string

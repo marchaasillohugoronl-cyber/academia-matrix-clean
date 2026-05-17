@@ -1,7 +1,7 @@
 'use client'
 import { useState, type ReactNode } from 'react'
 import { ChevronDown }              from 'lucide-react'
-import styles from './dashboard.module.css'
+import styles from './styles/acordeon.module.css'
 
 export default function AcordeonItem({ titulo, children }: { titulo: string; children: ReactNode }) {
   const [abierto, setAbierto] = useState(false)
