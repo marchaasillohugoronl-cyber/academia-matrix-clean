@@ -1,0 +1,87 @@
+.widget {
+  position: fixed;
+  bottom: 28px;
+  right: 20px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* burbuja de mensaje */
+.burbuja {
+  background: #0d1b4b;
+  color: #fff;
+  font-family: var(--fuente-display);
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 18px 18px 4px 18px;
+  white-space: nowrap;
+  max-width: calc(100vw - 100px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 4px 20px rgba(13,27,75,0.35);
+  animation: burbujaViva 3s ease-in-out infinite;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.burbujaOculta {
+  opacity: 0;
+  transform: translateY(6px) scale(0.94);
+  pointer-events: none;
+  animation: none;
+}
+
+/* botón circular */
+.circulo {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #0d1b4b;
+  border: 2px solid var(--acento);
+  color: var(--acento);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 22px rgba(0,200,240,0.35);
+  animation: iconoVivo 3.4s ease-in-out infinite;
+  flex-shrink: 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.widget:hover .burbuja {
+  box-shadow: 0 6px 28px rgba(13,27,75,0.5);
+}
+
+.widget:hover .circulo {
+  box-shadow: 0 0 32px rgba(0,200,240,0.6);
+  border-color: var(--acento-hover);
+  color: var(--acento-hover);
+  transform: scale(1.06);
+}
+
+/* pantallas muy pequeñas */
+@media (max-width: 359px) {
+  .widget  { right: 10px; bottom: 20px; }
+  .circulo { width: 46px; height: 46px; }
+  .burbuja { font-size: 0.68rem; padding: 8px 12px; }
+}
+
+@keyframes burbujaViva {
+  0%, 100% { transform: translateY(0)    scale(1);    }
+  30%       { transform: translateY(-5px) scale(1.02); }
+  65%       { transform: translateY(2px)  scale(0.99); }
+}
+
+@keyframes iconoVivo {
+  0%, 100% { transform: translateY(0);   }
+  40%       { transform: translateY(-5px); }
+  70%       { transform: translateY(2px);  }
+}

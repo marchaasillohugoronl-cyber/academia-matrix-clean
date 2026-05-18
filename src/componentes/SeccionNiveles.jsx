@@ -2,7 +2,7 @@
 import { useAparecer } from './useAparecer'
 import { useRouter }   from 'next/navigation'
 import styles from './SeccionNiveles.module.css'
-import { BookOpen, GraduationCap, Target } from 'lucide-react'
+import { BookOpen, GraduationCap, Target, CalendarDays } from 'lucide-react'
 
 const NIVELES = [
   { id: 'primaria',        icono: BookOpen,      nombre: 'Primaria' },
@@ -28,14 +28,20 @@ function BotonNivel({ icono: Icono, nombre, id, retraso }) {
 }
 
 export default function SeccionNiveles() {
+  const navegar = useRouter()
   return (
-    <section id="niveles" className="contenedor-seccion">
-      <div className="etiqueta-seccion">Cobertura académica</div>
-      <h2 className="titulo-seccion">Niveles disponibles</h2>
-      <div className={styles.buttons}>
-        {NIVELES.map((n, i) => (
-          <BotonNivel key={n.nombre} {...n} retraso={i * 120} />
-        ))}
+    <section id="niveles" className={styles.seccion}>
+      <div className="contenedor-seccion">
+        <h2 className={`titulo-seccion ${styles.titulo}`}>Niveles disponibles</h2>
+        <div className={styles.buttons}>
+          {NIVELES.map((n, i) => (
+            <BotonNivel key={n.nombre} {...n} retraso={i * 120} />
+          ))}
+        </div>
+        <button className={styles.btnCiclos} onClick={() => navegar.push('/ciclos/sabatino')}>
+          <CalendarDays size={18} />
+          Ver ciclos disponibles
+        </button>
       </div>
     </section>
   )

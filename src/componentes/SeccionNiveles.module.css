@@ -1,66 +1,184 @@
-/* ── Contenedor de botones ───────────────────── */
+/* =========================================================
+   SECCIÓN PRINCIPAL CON FONDO
+========================================================= */
+
+/* 
+   Contenedor principal de la sección.
+   Usa una imagen de fondo completa tipo portada.
+*/
+.seccion {
+  background-image: url('/fondo/cabanillas.jpg');
+
+  /* Ajusta la imagen para cubrir toda el área */
+  background-size: cover;
+
+  /* Centra la imagen */
+  background-position: center;
+
+  /* Evita repeticiones */
+  background-repeat: no-repeat;
+
+  /* Necesario para posicionar el overlay */
+  position: relative;
+}
+
+/* 
+   Overlay oscuro encima del fondo.
+   Mejora la legibilidad del contenido.
+*/
+.seccion::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(5, 6, 14, 0.60);
+
+  /* Permite interacción con el contenido */
+  pointer-events: none;
+}
+
+
+.seccion {
+  width: 100%;
+  min-height: 500px;
+}
+/* =========================================================
+   CONTENEDOR DE BOTONES
+========================================================= */
+
+/* 
+   Layout principal de botones.
+   Mobile-first: vertical.
+*/
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* 
+   Tablet pequeña:
+   botones en fila horizontal.
+*/
 @media (min-width: 480px) {
+
   .buttons {
     flex-direction: row;
     gap: 16px;
+
+    /* Alineación hacia la izquierda */
     justify-content: flex-start;
   }
 }
 
+/* 
+   Tablet:
+   aumenta separación y tamaño visual.
+*/
 @media (min-width: 768px) {
-  .buttons { gap: 20px; }
+
+  .buttons {
+    gap: 20px;
+  }
+
   .btn {
     padding: 30px 28px;
+
     max-width: 340px;
+
     gap: 18px;
   }
 }
 
+/* 
+   Desktop:
+   diseño más amplio y centrado.
+*/
 @media (min-width: 1024px) {
-  .buttons { gap: 24px; justify-content: center; }
+
+  .buttons {
+    gap: 24px;
+
+    justify-content: center;
+  }
+
   .btn {
     padding: 36px 36px;
+
     max-width: 380px;
+
     font-size: 0.72rem;
+
     letter-spacing: 2.5px;
+
     gap: 20px;
   }
-  .btn svg { width: 30px; height: 30px; }
+
+  /* Íconos más grandes */
+  .btn svg {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-/* ── Botón de nivel ──────────────────────────── */
+
+
+/* =========================================================
+   BOTÓN DE NIVEL
+========================================================= */
+
+/* 
+   Tarjeta/botón principal.
+   Estilo tipo dashboard moderno.
+*/
 .btn {
+
+  /* Crece proporcionalmente */
   flex: 1;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 14px;
+
   max-width: 280px;
 
-  background: var(--tarjeta);
-  border: 1px solid var(--borde);
+  background: transparent;
+
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+
   padding: 24px 20px;
 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
   font-family: var(--fuente-display);
+
   font-size: 0.65rem;
+
   font-weight: 700;
+
   letter-spacing: 2px;
+
   text-transform: uppercase;
-  color: var(--texto-2);
+
+  color: #ffffff;
+
 
   position: relative;
+
   overflow: hidden;
+
   cursor: pointer;
 
+  /* Estado inicial para animación */
   opacity: 0;
+
   transform: translateY(20px);
+
   -webkit-tap-highlight-color: transparent;
+
   user-select: none;
 
   transition:
@@ -72,74 +190,278 @@
     color 0.3s;
 }
 
-/* Línea superior al hover */
+/* ── Botón ver ciclos ────────────────────────── */
+.btnCiclos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 20px 24px;
+  width: 100%;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: var(--fuente-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: background 0.25s, border-color 0.25s;
+}
+.btnCiclos:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.btnCiclos svg { flex-shrink: 0; }
+
+.titulo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:fit-content;
+  margin:0 auto 18px;
+
+  padding:12px 26px;
+
+
+  font-family:var(--fuente-display);
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  border-radius:14px;
+
+  position:relative;
+
+  box-shadow:
+    0 10px 25px rgba(13,27,75,0.12);
+
+  border:1px solid rgba(13,27,75,0.06);
+}
+
+
+/* =========================================================
+   LÍNEA SUPERIOR HOVER
+========================================================= */
+
+/* 
+   Línea decorativa animada.
+*/
 .btn::before {
+
   content: '';
+
   position: absolute;
-  top: 0; left: 0; right: 0;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
   height: 2px;
+
   background: var(--acento);
+
+  /* Oculta inicialmente */
   transform: scaleX(0);
+
   transform-origin: left;
+
   transition: transform 0.35s ease;
 }
-.btn:hover::before { transform: scaleX(1); }
 
-/* Shimmer al presionar */
+/* 
+   Activa animación al hover.
+*/
+.btn:hover::before {
+  transform: scaleX(1);
+}
+
+
+
+/* =========================================================
+   EFECTO SHIMMER AL PRESIONAR
+========================================================= */
+
+/* 
+   Overlay luminoso al hacer click/touch.
+*/
 .btn::after {
+
   content: '';
+
   position: absolute;
+
   inset: 0;
+
   background: rgba(0, 200, 240, 0.12);
+
   opacity: 0;
+
   pointer-events: none;
+
   transition: opacity 0.1s;
 }
-.btn:active::after { opacity: 1; }
 
-.btn.visible {
+/* 
+   Visible al presionar.
+*/
+.btn:active::after {
   opacity: 1;
+}
+
+
+
+/* =========================================================
+   ESTADO VISIBLE
+========================================================= */
+
+/* 
+   Clase usada para animación de entrada.
+*/
+.btn.visible {
+
+  opacity: 1;
+
   transform: translateY(0);
 }
 
+
+
+/* =========================================================
+   HOVER DEL BOTÓN
+========================================================= */
+
+/* 
+   Efecto visual al pasar el mouse.
+*/
 .btn:hover {
-  border-color: rgba(0, 200, 240, 0.4);
-  background: rgba(0, 200, 240, 0.05);
-  color: var(--acento);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+
+  border-color: rgba(255, 255, 255, 0.7);
+
+  background: rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
   transform: translateY(-4px);
 }
-.btn:active { transform: scale(0.96) !important; box-shadow: none; }
 
-.btn svg {
-  color: var(--acento);
-  opacity: 0.75;
-  flex-shrink: 0;
-  transition: opacity 0.3s, transform 0.3s;
+/* 
+   Efecto de presión.
+*/
+.btn:active {
+
+  transform: scale(0.96) !important;
+
+  box-shadow: none;
 }
-.btn:hover svg { opacity: 1; transform: scale(1.12); }
 
-/* ── Mobile: tipo app ────────────────────────── */
+
+
+/* =========================================================
+   ÍCONOS SVG
+========================================================= */
+
+/* 
+   Ícono decorativo del botón.
+*/
+.btn svg {
+
+  color: #ffffff;
+
+  opacity: 0.8;
+
+  flex-shrink: 0;
+
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+/* 
+   Animación del ícono al hover.
+*/
+.btn:hover svg {
+
+  opacity: 1;
+
+  transform: scale(1.12);
+}
+
+
+
+/* =========================================================
+   MOBILE APP STYLE
+========================================================= */
+
+/* 
+   Estilo especial para móviles.
+   Tipo lista/app nativa.
+*/
 @media (max-width: 479px) {
-  .buttons { gap: 10px; }
+
+  .buttons {
+    gap: 10px;
+  }
 
   .btn {
+
     max-width: none;
+
     padding: 20px 24px;
+
     justify-content: flex-start;
+
     gap: 16px;
+
     border-radius: 2px;
   }
 
-  /* En mobile, la línea va a la izquierda */
+  /* 
+     Línea lateral vertical en mobile.
+  */
   .btn::before {
-    top: 0; left: 0; right: auto; bottom: 0;
+
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: 0;
+
     width: 3px;
+
     height: auto;
+
     transform: scaleY(0);
+
     transform-origin: top;
   }
-  .btn:hover::before { transform: scaleY(1); }
-  .btn:hover         { transform: translateX(5px); }
-  .btn:active        { transform: scale(0.97) !important; }
+
+  /* 
+     Animación vertical.
+  */
+  .btn:hover::before {
+    transform: scaleY(1);
+  }
+
+  /* 
+     Movimiento lateral tipo app.
+  */
+  .btn:hover {
+    transform: translateX(5px);
+  }
+
+  /* 
+     Presión táctil más suave.
+  */
+  .btn:active {
+    transform: scale(0.97) !important;
+  }
 }

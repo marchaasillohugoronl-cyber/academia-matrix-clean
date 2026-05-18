@@ -3,8 +3,8 @@ import { configuracion }         from '@/lib/db/schema'
 import { configToObject }        from '@/lib/sitio-util'
 import Portada                   from '@/componentes/Portada'
 import SeccionNiveles            from '@/componentes/SeccionNiveles'
-import SeccionCaracteristicas    from '@/componentes/SeccionCaracteristicas'
 import SeccionLlamada            from '@/componentes/SeccionLlamada'
+import BotPortada                from '@/componentes/BotPortada'
 
 export const dynamic = 'force-dynamic'
 
@@ -16,11 +16,12 @@ export default async function PaginaInicio() {
     <main>
       <Portada />
       <div className="divisor" />
+      <div className="divisor" />
       <SeccionNiveles />
       <div className="divisor" />
-      <SeccionCaracteristicas />
-      <div className="divisor" />
       <SeccionLlamada sitio={sitio} />
+      <BotPortada />
     </main>
   )
 }
+

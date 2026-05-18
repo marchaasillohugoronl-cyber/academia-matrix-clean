@@ -5,25 +5,31 @@ import { Bot } from 'lucide-react'
 import styles from './styles/bot.module.css'
 
 const MENSAJES_DIA = [
-  '¿Estudiamos juntos?',
-  '¡Tengo preguntas! ',
-  '¿Un repaso rápido?',
-  '¡Practica hoy!',
-  'ERROR:#400',
-  '¿Listo para el reto?',
-  '¡Hey...! ',
-  '¿Me buscabas?',
-  '¡Nuevo desafío!',
-  'Hola, estoy listo!!',
+  '¿Resolvemos algo? 🧮',
+  'x = (-b ± √Δ) / 2a',
+  '¡Próximo ingresante! 🎯',
+  '¿Sabes factorizar? 🤔',
+  '¡No te rindas! 🔥',
+  'sin²θ + cos²θ = 1 😎',
+  '¿Listo para la UNI?',
+  '√144 = ? Calcula 😏',
+  '¡Oye, ven a repasar!',
+  '¡Soy tu profe bot! 🤖',
+  'Pitágoras te llama 📐',
+  '¿Integramos hoy? ∫',
+  '¡Tu examen se acerca!',
+  'ERROR: falta estudiar',
+  '¡Practica y vencerás!',
+  '¿Un reto rápido? ⚡',
 ]
 
 const MENSAJES_NOCHE = [
-  'Zzzz...',
-  'Buenas noches 🌙',
-  'Zzzz... 😴',
-  '¡Descansa bien!',
-  'Zzzz...',
-  'Descanza wawita',
+  'Ya es tarde 🌙',
+  'Zzz… ¿aún estudias? 🦉',
+  'Mañana más ejercicios',
+  '¡Descansa, wawita! 😴',
+  'Sueña con integrales 💤',
+  'Zzzz… hasta mañana',
 ]
 
 function isNoche() {
@@ -62,8 +68,7 @@ export default function BotFlotante({ nombre }: { nombre: string }) {
     setMensaje(saludoInicial(nombre))
 
     function pausaAleatoria() {
-      // entre 30 000 ms y 40 000 ms
-      return 30_000 + Math.random() * 10_000
+      return 10_000 + Math.random() * 6_000   // 10–16 s entre mensajes
     }
 
     function ocultar() {
@@ -75,7 +80,7 @@ export default function BotFlotante({ nombre }: { nombre: string }) {
       idxRef.current = (idxRef.current + 1) % lista.length
       setMensaje(lista[idxRef.current])
       setBurbuja(true)
-      timer.current = setTimeout(ocultar, 8_000)
+      timer.current = setTimeout(ocultar, 5_000)
     }
 
     timer.current = setTimeout(() => {

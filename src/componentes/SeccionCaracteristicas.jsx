@@ -13,30 +13,16 @@ const CARACTERISTICAS = [
     descripcion: 'Identificamos y corregimos vacíos conceptuales con ejercicios prácticos y progresivos.',
   },
   {
-    icono: Brain,
-    titulo: 'Razonamiento lógico',
-    descripcion: 'Desarrollamos la capacidad de análisis y resolución de problemas complejos.',
-  },
-  {
     icono: TrendingUp,
     titulo: 'Metodología progresiva',
-    descripcion: 'Avanzamos de lo básico a lo complejo, asegurando comprensión real en cada etapa.',
-  },
-  {
-    icono: UserCheck,
-    titulo: 'Seguimiento académico',
-    descripcion: 'Cada alumno recibe seguimiento personalizado para maximizar su rendimiento.',
+    descripcion: 'Nuestra plataforma y app están diseñadas para guiarte paso a paso, comenzando con lo esencial y avanzando de forma estructurada hacia niveles más avanzados para un aprendizaje sólido y continuo.',
   },
   {
     icono: FileText,
     titulo: 'Material incluido',
     descripcion: 'Todo el material de trabajo está cubierto en el costo del ciclo. Sin gastos extra.',
   },
-  {
-    icono: Trophy,
-    titulo: 'Orientado a resultados',
-    descripcion: 'Elevamos el rendimiento académico de forma medible y sostenida en cada ciclo.',
-  },
+
 ]
 
 function TarjetaCaracteristica({ icono: Icono, titulo, descripcion, retraso }) {
@@ -61,7 +47,7 @@ function TarjetaCaracteristica({ icono: Icono, titulo, descripcion, retraso }) {
 
 export default function SeccionCaracteristicas() {
   return (
-    <section className="contenedor-seccion">
+    <section className={`contenedor-seccion ${styles.seccion}`}>
       <div className="etiqueta-seccion">Metodología</div>
       <h2 className="titulo-seccion">¿Por qué MATRIX?</h2>
       <div className={styles.grid}>

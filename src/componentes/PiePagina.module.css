@@ -1,23 +1,41 @@
-/* ── Footer ──────────────────────────────────── */
+/* ── Footer — tema claro (espejo de Portada) ─── */
 .footer {
-  margin-top: 80px;
-  padding: 52px 20px 24px;
-  background: var(--superficie);
-  color: var(--texto);
-  border-top: 1px solid var(--borde);
   position: relative;
+  margin-top: 0;
+  padding: 52px 20px 24px;
+  background: #eef4ff;
+  color: #0d1b4b;
+  border-top: 1px solid rgba(13, 27, 75, 0.10);
+  overflow: hidden;
 }
+
+/* Cuadrícula tipo cuaderno */
+.footer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(13, 27, 75, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 27, 75, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Línea accent superior */
 .footer::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, transparent, var(--acento), transparent);
-  opacity: 0.5;
+  z-index: 1;
 }
 
 /* ── Fila principal ──────────────────────────── */
 .inner {
+  position: relative;
+  z-index: 1;
   max-width: 860px;
   margin: 0 auto;
   display: flex;
@@ -33,18 +51,21 @@
   flex-direction: column;
   gap: 10px;
 }
+
 .logo {
   font-family: var(--fuente-display);
   font-size: 1.35rem;
   font-weight: 900;
-  color: var(--texto);
-  letter-spacing: 1px;
+  color: #0d1b4b;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
+
 .tagline {
   max-width: 240px;
   font-size: 0.85rem;
   line-height: 1.65;
-  color: var(--texto-2);
+  color: #5a7090;
 }
 
 /* ── Info de contacto ────────────────────────── */
@@ -53,11 +74,13 @@
   flex-direction: column;
   gap: 10px;
 }
+
 .address {
   font-size: 0.85rem;
   line-height: 1.65;
-  color: var(--texto-2);
+  color: #5a7090;
 }
+
 .phone {
   display: inline-flex;
   align-items: center;
@@ -71,9 +94,47 @@
   text-decoration: none;
   transition: color 0.2s, transform 0.2s;
 }
+
 .phone:hover {
-  color: var(--acento-hover);
+  opacity: 0.75;
   transform: translateY(-1px);
+}
+
+/* ── Logos cíclicos ──────────────────────────── */
+.logosBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.logosLabel {
+  font-family: var(--fuente-display);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5a7090;
+  white-space: nowrap;
+}
+
+.logoImg {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: grayscale(30%) opacity(0.7);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.logoVisible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.logoOculto {
+  opacity: 0;
+  transform: scale(0.88);
 }
 
 /* ── Acciones ────────────────────────────────── */
@@ -83,31 +144,34 @@
   align-items: flex-start;
   flex-shrink: 0;
 }
+
 .footerHomeBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 11px 22px;
-  border: 1px solid var(--borde);
+  border: 1.5px solid #0d1b4b;
   background: transparent;
-  color: var(--texto-2);
+  color: #0d1b4b;
   font-family: var(--fuente-display);
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
+  border-radius: 4px;
   cursor: pointer;
-  transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.2s, box-shadow 0.25s;
+  transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.2s;
 }
+
 .footerHomeBtn:hover {
-  color: var(--acento);
-  border-color: rgba(0, 200, 240, 0.4);
-  background: rgba(0, 200, 240, 0.05);
-  box-shadow: 0 4px 16px rgba(0, 200, 240, 0.12);
+  background: rgba(13, 27, 75, 0.06);
+  border-color: #1a2f70;
   transform: translateY(-2px);
 }
+
 .footerHomeBtn:active { transform: scale(0.97); }
+
 .footerHomeBtn:focus-visible {
   outline: 2px solid var(--acento);
   outline-offset: 3px;
@@ -115,6 +179,8 @@
 
 /* ── Fila inferior ───────────────────────────── */
 .bottom {
+  position: relative;
+  z-index: 1;
   max-width: 860px;
   margin: 36px auto 0;
   padding-top: 20px;
@@ -124,10 +190,10 @@
   gap: 12px;
   font-size: 0.75rem;
   line-height: 1.5;
-  color: var(--atenuado);
-  border-top: 1px solid var(--borde-sutil);
-  opacity: 0.75;
+  color: #5a7090;
+  border-top: 1px solid rgba(13, 27, 75, 0.10);
 }
+
 .bottom > *:only-child { margin: 0 auto; }
 
 /* ── Admin link ──────────────────────────────── */
@@ -140,11 +206,12 @@
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--atenuado);
+  color: #5a7090;
   text-decoration: none;
   opacity: 0.45;
   transition: opacity 0.2s, color 0.2s;
 }
+
 .adminLink:hover {
   opacity: 1;
   color: var(--acento);
@@ -159,11 +226,12 @@
     text-align: center;
     gap: 24px;
   }
-  .brand { align-items: center; }
-  .tagline { max-width: 100%; }
-  .info { align-items: center; }
-  .phone { justify-content: center; }
-  .actions { justify-content: center; }
+  .brand    { align-items: center; }
+  .tagline  { max-width: 100%; }
+  .info     { align-items: center; }
+  .phone    { justify-content: center; }
+  .actions  { justify-content: center; }
+  .logosBox { align-items: center; }
   .bottom {
     flex-direction: column;
     text-align: center;
