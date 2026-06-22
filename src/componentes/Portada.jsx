@@ -159,16 +159,17 @@ export default function Portada() {
       {/* ── CTAs ─────────────────────────────────── */}
       {/* ── CTAs ─────────────────────────────────── */}
       <div className={styles.ctaRow}>
-
-        <Link href="/registro" className={styles.btnInscribirse}>
+        <Link
+          href="https://academia-matrix-sistema.vercel.app/preinscripcion"
+          className={styles.btnInscribirse}
+        >
           Inscribirme
         </Link>
-
         <a
           href="https://academia-matrix-sistema.vercel.app/login"
           className={styles.btnPortal}
         >
-          Iniciar Seccion
+          INGRESAR
         </a>
 
       </div>

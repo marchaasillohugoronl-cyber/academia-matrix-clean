@@ -22,7 +22,7 @@ const MENSAJES = [
 ]
 
 export default function BotPortada() {
-  const [mensaje,  setMensaje]  = useState('¡Bienvenido a Matrix! 👋')
+  const [mensaje,  setMensaje]  = useState('¡Bienvenido a Matrix! ')
   const [visible,  setVisible]  = useState(false)
   const [burbuja,  setBurbuja]  = useState(false)
   const idxRef = useRef(0)
@@ -55,7 +55,11 @@ export default function BotPortada() {
   if (!visible) return null
 
   return (
-    <Link href="/registro" className={styles.widget} title="Inscríbete en Matrix">
+    <Link
+      href="https://academia-matrix-sistema.vercel.app/preinscripcion"
+      className={styles.widget}
+      title="Inscríbete en Matrix"
+    >
       <div className={`${styles.burbuja} ${burbuja ? '' : styles.burbujaOculta}`}>
         {mensaje}
       </div>
