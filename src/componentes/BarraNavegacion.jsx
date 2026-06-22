@@ -26,18 +26,16 @@ export default function BarraNavegacion({ sitio }) {
       </Link>
 
       <div className={styles.navRight}>
-        {esInicio && (
-          <a href="#info" className={styles.navLink}>Inscripción</a>
-        )}
-        <Link href="/ciclos"   className={styles.navLink}>Ciclos</Link>
-        <Link href="/registro" className={styles.navLink}>Registro</Link>
+        <Link href="/ciclos" className={`${styles.navLink} ${pathname === '/ciclos' ? styles.navLinkActive : ''}`}>
+          Ciclos
+        </Link>
         <a
-          href={sitio?.whatsapp ?? '#'}
-          target="_blank"
-          rel="noreferrer"
+          href="https://academia-matrix-sistema.vercel.app/preinscripcion"
           className={styles.cta}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Inscríbete
+          Registro
         </a>
       </div>
     </nav>

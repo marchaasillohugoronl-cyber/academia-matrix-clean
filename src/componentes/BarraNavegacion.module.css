@@ -68,19 +68,43 @@
 
 /* ── Enlace de nav ───────────────────────────── */
 .navLink {
-  display: none;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--fuente-display);
-  font-size: 0.52rem;
-  letter-spacing: 2.5px;
-  color: var(--atenuado);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: rgba(180, 220, 240, 0.75);
   text-transform: uppercase;
+  text-decoration: none;
   padding: 6px 14px;
+  border-radius: 4px;
+  position: relative;
   transition: color 0.2s, background 0.2s;
-  border-radius: 2px;
+}
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: var(--acento);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
 }
 .navLink:hover {
-  color: var(--texto);
-  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  background: rgba(0, 200, 240, 0.07);
+}
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+.navLinkActive {
+  color: var(--acento);
+}
+.navLinkActive::after {
+  transform: scaleX(1);
 }
 
 /* ── CTA principal ───────────────────────────── */
@@ -108,7 +132,6 @@
 /* ── Desktop ≥ 640px ─────────────────────────── */
 @media (min-width: 640px) {
   .nav { padding: 0 32px; height: 72px; }
-  .navLink { display: block; }
   .navRight { gap: 12px; }
 }
 
@@ -117,8 +140,8 @@
   .nav { padding: 0 56px; height: 76px; }
   .navRight { gap: 20px; }
   .navLink {
-    font-size: 0.56rem;
-    letter-spacing: 3px;
+    font-size: 0.76rem;
+    letter-spacing: 2.5px;
     padding: 8px 18px;
   }
   .logoText { font-size: 1.05rem; letter-spacing: 5px; }
@@ -130,5 +153,7 @@
 @media (max-width: 639px) {
   .logoImg { height: 46px; }
   .logoText { font-size: 0.8rem; letter-spacing: 3px; }
-  .cta { padding: 9px 16px; }
+  .navLink { font-size: 0.62rem; padding: 5px 10px; letter-spacing: 1.5px; }
+  .cta { padding: 9px 14px; font-size: 0.58rem; }
+  .navRight { gap: 6px; }
 }
